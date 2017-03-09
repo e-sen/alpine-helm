@@ -15,10 +15,10 @@ master:
   only:
     - master
 
-named:
+stable:
   stage: build
   script:
-    - docker build -t "$CI_REGISTRY_IMAGE:$(CI_BUILD_REF_SLUG)" --cache-from "$CI_REGISTRY_IMAGE:latest"  .
-    - docker push "$CI_REGISTRY_IMAGE:$(CI_BUILD_REF_SLUG)"
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_SLUG" --cache-from "$CI_REGISTRY_IMAGE:latest"  .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_SLUG"
   except:
-    - master
+    - master # non-master branches and tags
