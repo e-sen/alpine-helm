@@ -10,7 +10,7 @@ before_script:
 master:
   stage: build
   script:
-    - docker build -t "$CI_REGISTRY_IMAGE:latest" --cache-from "$CI_REGISTRY_IMAGE:latest .
+    - docker build -t "$CI_REGISTRY_IMAGE:latest" --cache-from "$CI_REGISTRY_IMAGE:latest" .
     - docker push "$CI_REGISTRY_IMAGE:latest"
   only:
     - master
@@ -18,7 +18,7 @@ master:
 named:
   stage: build
   script:
-    - docker build -t "$CI_REGISTRY_IMAGE:$(CI_BUILD_REF_SLUG)" --cache-from "$CI_REGISTRY_IMAGE:latest  .
+    - docker build -t "$CI_REGISTRY_IMAGE:$(CI_BUILD_REF_SLUG)" --cache-from "$CI_REGISTRY_IMAGE:latest"  .
     - docker push "$CI_REGISTRY_IMAGE:$(CI_BUILD_REF_SLUG)"
   except:
     - master
