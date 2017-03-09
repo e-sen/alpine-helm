@@ -22,3 +22,4 @@ stable:
     - docker push "$CI_REGISTRY_IMAGE:$CI_BUILD_REF_SLUG"
   except:
     - master # non-master branches and tags
+
